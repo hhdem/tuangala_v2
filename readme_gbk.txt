@@ -1,40 +1,30 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; È·±£ÏÂÃæµÄÄ£¿é
+;; ç¡®ä¿ä¸‹é¢çš„æ¨¡å—
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-php-memcache [Option] ¿ÉÑ¡£¬ÈçÑ¡ÖÐ£¬»¹Ó¦¸ÃÓÐ¶ÔÓ¦µÄMemcache Server
-php-json [Option] ¿ÉÑ¡
-php-curl [Option] ¿ÉÑ¡
-php-mbstring ±ØÐë 
-php-gd ±ØÐë ---
-php-mysql ±ØÐë ---
+php-memcache [Option] å¯é€‰ï¼Œå¦‚é€‰ä¸­ï¼Œè¿˜åº”è¯¥æœ‰å¯¹åº”çš„Memcache Server
+php-json [Option] å¯é€‰
+php-curl [Option] å¯é€‰
+php-mbstring å¿…é¡» 
+php-gd å¿…é¡» ---
+php-mysql å¿…é¡» ---
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ÒÔÏÂÄ¿Â¼ÉèÎª¿ÉÐ´
+;; ä»¥ä¸‹ç›®å½•è®¾ä¸ºå¯å†™
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 static/user
 static/team
 include/compiled
 include/configure
-include/template/ ÏÂÄ£°åÎÄ¼þÐèÒª¿ÉÐ´£¨Èç¹ûÐèÒªÔÚÏß±à¼­µÄ»°£©
+include/template/ ä¸‹æ¨¡æ¿æ–‡ä»¶éœ€è¦å¯å†™ï¼ˆå¦‚æžœéœ€è¦åœ¨çº¿ç¼–è¾‘çš„è¯ï¼‰
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; °²×°½Å±¾
+;; å®‰è£…è„šæœ¬
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-Í¨¹ýä¯ÀÀÖ´ÐÐ install.php
-°²×°ºó£¬µÚÒ»¸ö×¢²áµÄÓÃ»§£¬ÎªÏµÍ³¹ÜÀíÔ±£»
-¹ÜÀíÈë¿Ú£¬ÔÚÒ³Ãæ×îµ×²¿£¬ÖÐÑë²¿Î»
+é€šè¿‡æµè§ˆæ‰§è¡Œ install.php
+å®‰è£…åŽï¼Œç¬¬ä¸€ä¸ªæ³¨å†Œçš„ç”¨æˆ·ï¼Œä¸ºç³»ç»Ÿç®¡ç†å‘˜ï¼›
+ç®¡ç†å…¥å£ï¼Œåœ¨é¡µé¢æœ€åº•éƒ¨ï¼Œä¸­å¤®éƒ¨ä½
 
+æœ¬æºç ä»…ä¸ºä¸ªäººä½¿ç”¨
 
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ÌØ±ð×¢Òâ
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-°æÈ¨ËùÓÐ£º×îÍÁÍø
-È¨ÀûÈË£º´÷ÊéÎÄ
-QQ£º16256732
-Email£ºshwdai@gmail.com
-ÉùÃ÷£ºÈÎºÎÊ¹ÓÃ±¾Èí¼þµÄÓÃ»§£¬½ûÖ¹½«±¾Èí¼þ½øÐÐ¶þ´Î¿ª·¢ºóÓÃÓÚ³öÊÛÄ¿µÄ¡£
-
-ÓÐÈÎºÎ°²×°¡¢ºóÌ¨µÇÂ½¡¢Èç¹û²Ù×÷µÄÎÊÌâ£¬ÇëÈ¥ http://bbs.zuitu.com/ 
+Emailï¼štuangala@gmail.com
