@@ -1,0 +1,17 @@
+<div id="order-pay-dialog" class="order-pay-dialog-c" style="width:380px;">
+	<h3><span id="order-pay-dialog-close" class="close" onclick="return X.boxClose();">关闭</span>${$address?'编辑':'新建'}配送地址</h3>
+	<div style="overflow-x:hidden;padding:10px;">
+<form method="post" action="/account/address_edit.php" class="validator" >
+	<input type="hidden" name="id" value="{$address['id']}" />
+	<table width="96%" class="coupons-table">
+		<tr><td width="80" nowrap><b>收件人：</b></td><td><input type="text" name="name" value="{$address['name']}" require="true" datatype="require" class="f-input" /></td></tr>
+		
+		<tr><td nowrap><b>邮编：</b></td><td><input type="text" name="post" value="{$address['post']}" class="f-input" require="true" datatype="require"/></td></tr>
+		<tr><td nowrap><b>电话：</b></td><td><input type="text" name="phone" value="{$address['phone']}" class="f-input" /></td></tr>
+		<tr><td nowrap><b>手机：</b></td><td><input type="text" name="mobile" value="{$address['mobile']}" class="f-input" require="true" datatype="require" /></td></tr>
+		<tr><td nowrap><b>收件地址：</b></td><td><textarea cols="30" rows="5" name="address" class="f-textarea" datatype="require" require="true">{$address['address']}</textarea></td></tr>
+		<tr><td></td><td><input type="submit" value="确定" class="formbutton" /> <input type="button" value="取消" class="formbutton" onclick="return X.boxClose();" /></td></tr>
+	</table>
+</form>
+	</div>
+</div>

@@ -1,0 +1,16 @@
+<div id="order-pay-dialog" class="order-pay-dialog-c" style="width:380px;">
+	<h3><span id="order-pay-dialog-close" class="close" onclick="return X.boxClose();">关闭</span>账户金额支取：总金额(￥${moneyit($summoney)})</h3>
+	<div style="overflow-x:hidden;padding:10px;">
+	<form method="post" action="/biz/drawmoney.php" class="validator">
+	<table width="96%" class="coupons-table">
+		<!--{if $summoney - $sumdrawmoney > 200}-->
+			<tr><td nowrap><b>支取金额：</b></td><td><input type="text" name="drawmoney" class="f-input" datatype="range" min="200" max="9999" require="true" msg="长度受限"/></td></tr>
+			<tr><td nowrap colspan="2">目前可支取金额为：￥${moneyit($summoney - $sumdrawmoney)}</td></tr>
+			<tr><td colspan="2"><input type="submit" value="修改" class="formbutton" />&nbsp;<input type="button" value="取消" class="formbutton" onclick="return X.boxClose();"/></td></tr>
+		<!--{else}-->
+			<tr><td nowrap colspan="2">您可支取金额没有达到最低支付限额(￥200)!</td></tr>
+		<!--{/if}-->
+	</table>
+	</form>
+	</div>
+</div>

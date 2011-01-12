@@ -1,0 +1,25 @@
+<?php
+$value = array (
+  'navpartner' => 'Y',
+  'navseconds' => 'N',
+  'navgoods' => 'N',
+  'navforum' => 'N',
+  'displayfailure' => 'N',
+  'teamask' => 'N',
+  'creditseconds' => 'N',
+  'smssubscribe' => 'N',
+  'trsimple' => 'N',
+  'moneysave' => 'Y',
+  'teamwhole' => 'N',
+  'encodeid' => 'Y',
+  'userprivacy' => 'N',
+  'usercredit' => 'Y',
+  'cateteam' => 'Y',
+  'catepartner' => 'N',
+  'citypartner' => 'N',
+  'cateseconds' => 'N',
+  'categoods' => 'N',
+  'emailverify' => 'N',
+  'needmobile' => 'N',
+);
+?>

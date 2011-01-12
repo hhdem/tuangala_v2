@@ -1,0 +1,76 @@
+<!--{include header}-->
+<script type="text/javascript" src="/static/js/jquery.jqpuzzle.full.js"></script> 
+<link rel="stylesheet" type="text/css" href="/static/css/jquery.jqpuzzle.css" /> 
+<!--{if $login_user}-->
+	
+<!--if-->
+<script type="text/javascript"> 
+    $(document).ready(function() { 
+        // define your own settings 
+        var mySettings = { 
+            rows: 3, 
+            cols: 4, 
+            language: 'zh',
+			shuffle: true,
+			control: { 
+				shufflePieces: true,    // display 'Shuffle' button [true|false] 
+				confirmShuffle: true,   // ask before shuffling [true|false] 
+				toggleOriginal: true,   // display 'Original' button [true|false] 
+				toggleNumbers: true,    // display 'Numbers' button [true|false] 
+				counter: true,          // display moves counter [true|false] 
+				timer: false,            // display timer (seconds) [true|false] 
+				pauseTimer: true        // pause timer if 'Original' button is activated 
+										// [true|false] 
+			}, 
+			animation: { 
+				shuffleRounds: 1,       // number of shuffle rounds [1 ... ] 
+				shuffleSpeed: 800,      // time in ms to perform a shuffle round 
+				slidingSpeed: 200,      // time in ms for a single move 
+				fadeOriginalSpeed: 600  // time in ms to cross-fade original image 
+			}, 
+			style: { 
+				gridSize: 2,            // space between two pieces in px 
+				overlap: true,          // if true, adjacent piece borders will overlap 
+										// applies only if gridSize is set to 0 
+				backgroundOpacity: 0.1  // opacity of the original image behind the pieces 
+										// [0 ... 1] (0 means no display) 
+			},
+            success: { 
+                callback: function(results) {  
+                    alert('经过 ' + 
+                        + results.seconds + ' 秒时间里的 ' + results.moves + ' 次移动, 你成功了!'); 
+                } 
+            } 
+        };
+        // call jqPuzzle with mySettings and myTexts on images with class 'myPics' 
+        $('#puz_img').jqPuzzle(mySettings); 
+    }); 
+</script> 
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="login">
+	<div class="dashboard" id="dashboard">
+	</div>
+    <div id="content" class="login-box clear">
+        <div class="box">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head"><h2>拼图游戏</h2></div>
+                <div class="sect">
+					
+                    <p style="float:center;"><img src="/static/play/{$ramd}.jpg" id="puz_img"/></p>
+					
+                </div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+    </div>
+    <div id="sidebar">
+        <!--{include block_side_usercreate}-->
+		<!--{include block_side_bizcreate}-->
+		<!--{include block_side_bizupper}-->
+    </div>
+</div>
+    </div> <!-- bd end -->
+</div> <!-- bdw end -->	
+<!--{include footer}-->

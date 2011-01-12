@@ -1,0 +1,54 @@
+<!--{include biz_header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="money">
+    <div id="content" class="coupons-box clear mainwide">
+		<div class="box clear">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head">
+                    <h2>账户明细(总金额：<span class="currency">{$currency}</span>${moneyit($sumonlinepay+$sumcreditpay)})</h2>
+                    <ul class="filter">
+						<li class="label">分类: </li>
+						${current_biz_money($s)}
+					</ul>
+				</div>
+                <div class="sect">
+					<table id="orders-list" cellspacing="0" cellpadding="0" border="0" class="coupons-table" width="98%">
+						<tr><th >项目名称</th><th width="50">卖出</th><th width="80">在线支付</th><th width="80">余额支付</th><th width="100">总金额</th><th width="80">状态</th></tr>
+					<!--{loop $teams $index $one}-->
+						<tr ${$index%2?'':'class="alt"'}>
+							<td>
+								<a class="deal-title" href="/team.php?id={$one['id']}" target="_blank">{$one['title']}</a>
+								<a href="/ajax/partner.php?action=teamdetail&id={$one['id']}" class="ajaxlink">详情</a>
+							</td>
+							<td nowrap>{$one['buycount']} 份</td>
+							<td nowrap><span class="money">{$currency}</span>${moneyit($one['onlinepay'])}</td>
+							<td nowrap><span class="money">{$currency}</span>${moneyit($one['creditpay'])}</td>
+							<td nowrap><span class="money">{$currency}</span>${moneyit($one['onlinepay']+$one['creditpay'])}</td>
+							<td nowrap>
+								<span style="color:#F00;">${state_explain($one)}</span>
+							</td>
+						</tr>
+					<!--{/loop}-->
+						<tr style="font-weight:bold;">
+							<td colspan="2" style="background-color:#ffffa0;text-align:right;" >合计</td>
+							<td style="background-color:#ffffa0;" nowrap><span class="money">{$currency}</span>${moneyit($sumonlinepay)}</td>
+							<td style="background-color:#ffffa0;" nowrap><span class="money">{$currency}</span>${moneyit($sumcreditpay)}</td>
+							<td style="background-color:#ffffa0;" nowrap><span class="money">{$currency}</span>${moneyit($sumonlinepay+$sumcreditpay)}<br><span style="color:gray;font-size:8px;">-已支取:${moneyit($sumdrawmoney)}</span></td>
+							<td style="background-color:#ffffa0;" nowrap><a href="/ajax/partner.php?action=drawmoney" class="ajaxlink" title="支取最低额为200" alt="支取最低额为200">申请支取</a></td>
+						</tr>
+						<tr><td colspan="6">{$pagestring}</td></tr>
+                    </table>
+				</div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+    </div>
+</div>
+
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

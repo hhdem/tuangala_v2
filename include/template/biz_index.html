@@ -1,0 +1,43 @@
+<!--{include biz_header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="coupons">	
+	<div class="dashboard" id="dashboard">
+		<ul>${current_biz_index('index')}</ul>
+	</div>
+    <div id="content" class="coupons-box clear mainwide">
+		<div class="box clear">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head">
+                    <h2>项目列表</h2>
+					<ul class="filter"><li><a href="/biz/index.php">全部项目</a></li><li><a href="/biz/index.php?ing=ing">进行中的项目</a></li></ul>
+				</div>
+                <div class="sect">
+					<table id="orders-list" cellspacing="0" cellpadding="0" border="0" class="coupons-table">
+					<tr><th width="500">项目名称</th><th width="80">城市</th><th width="100">日期</th><th width="50">成交</th><th width="55">团购价</th><th width="40">审核</th><th width="120">操作</th></tr>
+					<!--{loop $teams $index $one}-->
+					<!--${$one['state'] = team_state($one)}-->
+					<tr ${$index%2?'':'class="alt"'} id="team-list-id-{$one['id']}">
+						<td style="text-align:left;"><a class="deal-title" href="/team.php?id={$one['id']}" target="_blank">{$one['title']}</a></td>
+						<td><!--{if $one['city_id']}-->{$cities[$one['city_id']]['name']}<!--{else}-->全国<!--{/if}--></td>
+						<td>${date('Y-m-d',$one['begin_time'])}<br/>${date('Y-m-d',$one['end_time'])}</td>
+						<td>{$one['now_number']}/{$one['min_number']}</td>
+						<td><span class="money">{$currency}</span>${moneyit($one['team_price'])}<br/><span class="money">{$currency}</span>${moneyit($one['market_price'])}</td>
+						<td><!--{if $one['audit']==1}-->是<!--{elseif $one['audit']==2}-->审核未通过<!--{else}--><p style="color:red;">等待审核</p><!--{/if}--></td>
+						<td class="op" nowrap><a href="/ajax/partner.php?action=teamdetail&id={$one['id']}" class="ajaxlink">详情</a> <!--{if $one['audit']<>1}-->| <a href="/biz/coupon_edit.php?id={$one['id']}">编辑</a> | <a href="/ajax/partner.php?action=teamremove&id={$one['id']}" class="ajaxlink" ask="确定删除本项目吗？">删除</a><!--{/if}--><!--{if $one['now_number']>=$one['min_number']}-->｜<a href="/biz/down.php?id={$one['id']}" target="_blank">下载</a><!--{/if}--></td>
+					</tr>
+					<!--{/loop}-->
+					<tr><td colspan="7">{$pagestring}</tr>
+                    </table>
+				</div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+    </div>
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

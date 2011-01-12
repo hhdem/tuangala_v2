@@ -1,0 +1,24 @@
+[26-Nov-2010 16:54:51] PHP Fatal error:  Uncaught exception 'Exception' with message 'Connect failed: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)' in /home/hhdemco1/public_html/tuangala/include/library/DB.class.php:48
+Stack trace:
+#0 /home/hhdemco1/public_html/tuangala/include/library/DB.class.php(24): DB->__construct()
+#1 /home/hhdemco1/public_html/tuangala/include/library/DB.class.php(83): DB::Instance()
+#2 /home/hhdemco1/public_html/tuangala/include/library/DB.class.php(418): DB::EscapeString('city')
+#3 /home/hhdemco1/public_html/tuangala/include/library/DB.class.php(154): DB::BuildCondition(Array)
+#4 /home/hhdemco1/public_html/tuangala/include/function/common.php(693): DB::LimitQuery('category', Array)
+#5 /home/hhdemco1/public_html/tuangala/include/function/common.php(679): option_category('city', false, true)
+#6 /home/hhdemco1/public_html/tuangala/app.php(20): option_hotcategory('city', false, true)
+#7 /home/hhdemco1/public_html/tuangala/team/list.php(2): require_once('/home/hhdemco1/...')
+#8 {main}
+  thro in /home/hhdemco1/public_html/tuangala/include/library/DB.class.php on line 48
+[26-Nov-2010 16:54:53] PHP Fatal error:  Uncaught exception 'Exception' with message 'Connect failed: Can't connect to local MySQL server through socket '/var/lib/mysql/mysql.sock' (2)' in /home/hhdemco1/public_html/tuangala/include/library/DB.class.php:48
+Stack trace:
+#0 /home/hhdemco1/public_html/tuangala/include/library/DB.class.php(24): DB->__construct()
+#1 /home/hhdemco1/public_html/tuangala/include/library/DB.class.php(83): DB::Instance()
+#2 /home/hhdemco1/public_html/tuangala/include/library/DB.class.php(418): DB::EscapeString('city')
+#3 /home/hhdemco1/public_html/tuangala/include/library/DB.class.php(154): DB::BuildCondition(Array)
+#4 /home/hhdemco1/public_html/tuangala/include/function/common.php(693): DB::LimitQuery('category', Array)
+#5 /home/hhdemco1/public_html/tuangala/include/function/common.php(679): option_category('city', false, true)
+#6 /home/hhdemco1/public_html/tuangala/app.php(20): option_hotcategory('city', false, true)
+#7 /home/hhdemco1/public_html/tuangala/team/list.php(2): require_once('/home/hhdemco1/...')
+#8 {main}
+  thro in /home/hhdemco1/public_html/tuangala/include/library/DB.class.php on line 48

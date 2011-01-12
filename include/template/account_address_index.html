@@ -1,0 +1,41 @@
+<!--{include header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="settings">
+    <div id="content" class="clear settings-box">
+		<div class="box clear">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head">
+					<h2>配送地址</h2>
+					<ul class="filter"><li><a href="/ajax/address.php?action=modify" class="ajaxlink">添加配送地址</a></li></ul>
+				</div>
+                <div class="sect">
+                    <table id="orders-list" cellspacing="0" cellpadding="0" border="0" class="coupons-table">
+						<tr><th width="50" nowrap>收件人</th><th width="300">所在地址</th><th width="50" nowrap>邮编</th><th width="100" nowrap>电话</th><th width="50">操作</th></tr>
+					<!--{loop $addresses $index $ads}-->
+						<tr ${$index%2?'':'class="alt"'}>
+							<td>{$ads['name']}</a></td>
+							<td>{$ads['address']}</td>
+							<td>{$ads['post']}</td>
+							<td>{$ads['phone']}<br/>
+							{$ads['mobile']}</td>
+							<td><a href="/ajax/address.php?action=modify&id={$ads['id']}" class="ajaxlink">修改</a><br><a href="/ajax/address.php?action=delete&id={$ads['id']}" class="ajaxlink">删除</a></td>
+						</tr>	
+					<!--{/loop}-->
+                    </table>
+                </div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+    </div>
+    <div id="sidebar" class="rail">
+		<!--{include block_side_credit}-->
+		<!--{include block_side_credittip}-->
+    </div>
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

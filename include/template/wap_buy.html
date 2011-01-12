@@ -1,0 +1,35 @@
+<!--{include wap_header}-->
+
+<h2>项目名称</h2>
+<p>{$team['title']}</p>
+<p>数量：<!--{if $team['per_number']}-->{$team['per_number']}件<!--{else}-->不限<!--{/if}-->
+<p>单价：{$currency}${moneyit($team['team_price'])}</p>
+
+<!--{if $team['delivery']=='express'}-->
+<p>快递：{$currency}${moneyit($team['fare'])}</p>
+<!--{/if}-->
+<form action="buy.php?id={$team['id']}" method="post" >
+<input type="hidden" name="id" value="{$team['id']}" />
+<h2>购买选项</h2>
+<p>数量<span style="color:red;">(*)</span></p>
+<p><input type="text" name="quantity" value="1" ${$team['per_number']==1 ? 'readonly':''} /></p>
+
+<!--{if $team['delivery']=='express'}-->
+<p>收件人<span style="color:red;">(*)</span></p>
+<p><input type="text" name="realname" id="settings-realname" class="f-input" value="{$login_user['realname']}" /></p>
+<p>手机号<span style="color:red;">(*)</span></p>
+<p><input type="text" name="mobile" id="settings-mobile" class="number" value="{$login_user['mobile']}" maxLength="11" /></p>
+<p>邮政编码<span style="color:red;">(*)</span></p>
+<p><input type="text" name="zipcode" id="settings-mobile" class="number" value="{$login_user['zipcode']}" maxLength="6" /></p>
+<p>收件地址<span style="color:red;">(*)</span></p>
+<p><input type="text" name="address" id="settings-address" class="f-input" value="{$login_user['address']}" /></p>
+<!--{/if}-->
+
+<p>订单附言</p>
+<p><textarea name="remark" style="width:200px;height:40px;padding:2px;">${htmlspecialchars($order['remark'])}</textarea></p>
+
+<p><input type="hidden" name="id" value="{$order['id']}" /><input type="submit" class="formbutton" name="buy" value="确认无误，购买"/></p>
+
+</form>
+
+<!--{include wap_footer}-->

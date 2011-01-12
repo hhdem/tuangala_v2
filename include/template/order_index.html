@@ -1,0 +1,47 @@
+<!--{include header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="coupons">
+	<div class="dashboard" id="dashboard">
+		<ul>${current_account('/order/index.php')}</ul>
+	</div>
+    <div id="content" class="coupons-box clear">
+		<div class="box clear">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head">
+                    <h2>我的订单</h2>
+                    <ul class="filter">
+						<li class="label">分类: </li>
+						${current_order_index($selector)}
+					</ul>
+				</div>
+                <div class="sect">
+					<table id="orders-list" cellspacing="0" cellpadding="0" border="0" class="coupons-table">
+						<tr><th width="380">项目名称</th><th width="60">数量</th><th width="60">总价</th><th width="60">状态</th><th width="60">操作</th></tr>
+					<!--{loop $orders $index $one}-->
+						<tr ${$index%2?'':'class="alt"'}>
+							<td style="text-align:left;"><a class="deal-title" href="/team.php?id={$one['team_id']}" target="_blank">{$teams[$one['team_id']]['title']}</a></td>
+							<td>{$one['quantity']}</td>
+							<td><span class="money">{$currency}</span>${moneyit($one['origin'])}</td>
+							<td><!--{if $one['state']=='pay'}-->已付款<!--{elseif $teams[$one['team_id']]['close_time']>0}-->已过期<!--{elseif $one['state']=='waitgood'}-->等待发货<!--{elseif $one['state']=='send'}-->已发货<!--{elseif $one['state']=='receive'}-->确认收货<!--{else}-->未付款<!--{/if}--></td>
+							<td class="op"><!--{if ($one['state']=='unpay'&&$teams[$one['team_id']]['close_time']==0)}--><a href="/order/check.php?id={$one['id']}">付款</a><!--{elseif $one['state']=='pay'}--><a href="/order/view.php?id={$one['id']}">详情</a><!--{/if}--></td>
+						</tr>
+					<!--{/loop}-->
+						<tr><td colspan="5">{$pagestring}</td></tr>
+                    </table>
+				</div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+    </div>
+    <div id="sidebar">
+		<!--{include block_side_aboutorder}-->
+    </div>
+</div>
+
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

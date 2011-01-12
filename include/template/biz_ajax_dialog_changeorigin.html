@@ -1,0 +1,23 @@
+<div id="order-pay-dialog" class="order-pay-dialog-c" style="width:380px;">
+	<h3><span id="order-pay-dialog-close" class="close" onclick="return X.boxClose();">关闭</span>改变付款总金额：交易单号({$order['pay_id']})</h3>
+	<div style="overflow-x:hidden;padding:10px;">
+	<form method="post" action="/biz/order/change_origin.php" class="validator">
+	<input type="hidden" name="id" value="{$order['id']}" />
+	<table width="96%" class="coupons-table">
+		<tr><td nowrap><b>团购名称：</b></td><td>{$team['title']}</td></tr>
+		<tr><td width="80"><b>用户信息：</b></td><td>{$user['username']} / {$user['email']}</td></tr>
+		<!--{if $order['remark']}-->
+		<tr><td width="80"><b>买家留言：</b></td><td>${htmlspecialchars($order['remark'])}</td></tr>
+		<!--{/if}-->
+		<!--{if $team['delivery']=='express'}-->
+			<tr><th colspan="2"><hr/></th></td>
+			<tr><td width="80"><b>收件人：</b></td><td>{$order['realname']}</td></tr>
+			<tr><td><b>手机号码：</b></td><td>{$order['mobile']}</td></tr>
+			<tr><td><b>收件地址：</b></td><td>{$order['address']}</td></tr>
+		<!--{/if}-->
+		<tr><td nowrap><b>订单金额：</b></td><td><input type="text" name="origin" value="${intval($order['origin'])}" class="f-input" /></td></tr>
+		<tr><td colspan="2"><input type="submit" value="修改" class="formbutton" />&nbsp;<input type="button" value="取消" class="formbutton" onclick="return X.boxClose();"/></td></tr>
+	</table>
+	</form>
+	</div>
+</div>

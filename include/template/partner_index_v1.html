@@ -1,0 +1,42 @@
+<!--{include header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="recent-deals">
+<!--{if option_yes('catepartner')}-->
+	<div class="dashboard" id="dashboard">
+		<ul>${current_partner($group_id)}</ul>
+	</div>
+<!--{/if}-->
+    <div id="content">
+        <div class="box">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head"><h2>{$category['name']}品牌商户</h2></div>
+				<div class="sect">
+					<ul class="deals-list">
+					<!--{loop $partners $index $one}-->
+						<li class="${$index++%2?'alt':''} ${$index<=2?'first':''}">
+							<h4><a href="/partner.php?id={$one['id']}" title="{$one['title']}" target="_blank">${mb_strimwidth($one['title'],0,86,'...')}</a><br/>联系电话：{$one['phone']}</h4>
+							<div class="pic">
+								<a href="/partner.php?id={$one['id']}" title="{$one['title']}" target="_blank"><img alt="{$one['title']}" src="${team_image($one['image'], true)}" width="200" height="121"></a>
+							</div>
+							<div class="info">${mb_strimwidth(strip_tags($one['other']),0,110,'...')}</div>
+						</li>
+					<!--{/loop}-->
+					</ul>
+					<div class="clear"></div>
+					<div>{$pagestring}</div>
+				</div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+    </div>
+	<div id="sidebar">
+		<!--{include block_side_subscribe}-->
+	</div>
+</div>
+    </div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

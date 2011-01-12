@@ -1,0 +1,47 @@
+<!--{include header}-->
+
+<!--{if count($hotcities) < 1}-->
+	<link rel="stylesheet" type="text/css" href="/static/css/colorbox.css" media="screen" />
+	<script type="text/javascript" src="/static/js/jquery.colorbox-min.js"></script>
+<!--{/if}-->
+
+<script type="text/javascript">
+	
+	$(document).ready(function() {
+		$("#fentuanimg").colorbox({opacity: 0.3, inline:true, href:"#fentuanimgid"});
+	});
+</script>
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="about">
+	<div class="dashboard" id="dashboard">
+		<ul>${current_about('fentuan')}</ul>
+	</div>
+	<div id="content" class="about clear">
+        <div class="clear box">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head"><h2>分团申请说明</h2></div>
+				<div class="sect">
+					<a href="javascript:void(0);" id="fentuanimg"><img id="fentuanimg" src="http://www.tuangala.com/static/team/2010/1117/12899695474639.jpeg" alt="分团说明" align="middle" width="610" border="5"></a>
+				</div>
+                <div class="sect">				
+				{$page['value']}</div>
+				<div style="display: none;">
+					<div id="fentuanimgid" style="margin-top:5px;padding:10px 10px;">
+						<img id="fentuanimg" src="http://www.tuangala.com/static/team/2010/1117/12899695474639.jpeg" alt="分团说明" align="middle" />
+					</div>
+				</div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+	</div>
+	<div id="sidebar">
+        <!--{include block_side_bizcreate}-->
+		<!--{include block_side_bizupper}-->
+    </div>
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

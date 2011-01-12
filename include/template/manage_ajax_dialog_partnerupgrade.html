@@ -1,0 +1,13 @@
+<div id="order-pay-dialog" class="order-pay-dialog-c" style="width:380px;">
+	<h3><span id="order-pay-dialog-close" class="close" onclick="return X.boxClose();">关闭</span>编辑商户级别：{$partner['username']}</h3>
+	<div style="overflow-x:hidden;padding:10px;">
+	<form method="POST" id="form_authorization_id">
+	<input type="hidden" name="action" value="partnerupgrade" />
+	<input type="hidden" name="id" value="{$partner['id']}" />
+	<table width="96%" class="coupons-table">
+		<tr><td width="100"><select name="group_id" class="f-input" style="width:160px;">${Utility::Option(option_category('vip'), $partner['group_id'],'-选择级别-')}${Utility::Option(option_category('partner'), $partner['group_id'])}</select></td></tr>
+		<tr><td colspan="2"><input type="submit" class="formbutton" value="确定" /></td></tr>
+	</table>
+	</form>
+	</div>
+</div>

@@ -1,0 +1,132 @@
+<!--{include header}-->
+<!--{if is_get()}-->
+<div class="sysmsgw" id="sysmsg-error"><div class="sysmsg"><p>此订单尚未完成付款，请重新付款</p><span class="close">关闭</span></div></div>
+<!--{/if}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="order-pay">
+    <div id="content">
+        <div id="deal-buy" class="box">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head">
+                    <h2>充值金额：<strong class="total-money">${moneyit($total_money)}</strong> 元</h2>
+                </div>
+                <div class="sect">
+                    <div style="text-align:left;">
+<!--{if $order_service=='tenpay'}-->
+<form id="order-pay-form" method="post" target="_blank" sid="charge">
+	<input type="hidden" name="reqUrl" value="{$reqUrl}" />
+	<input type="hidden" name="action" value="redirect" />
+	<img src="/static/css/i/tenpay.jpg" /><br/>
+	<input type="submit" class="formbutton" value="前往财付通付款" />
+</form>
+<!--{elseif $order_service=='alipay'}-->
+<form id="order-pay-form" method="post" action="https://www.alipay.com/cooperate/gateway.do?_input_charset={$_input_charset}" target="_blank" sid="charge">
+	<input type="hidden" name="body" value="{$body}" />
+	<input type="hidden" name="notify_url" value="{$notify_url}" />
+	<input type="hidden" name="out_trade_no" value="{$out_trade_no}" />
+	<input type="hidden" name="partner" value="{$partner}" />
+	<input type="hidden" name="payment_type" value="1" />
+	<input type="hidden" name="return_url" value="{$return_url}" />
+	<input type="hidden" name="seller_email" value="{$seller_email}" />
+	<input type="hidden" name="service" value="{$service}" />
+	<input type="hidden" name="show_url" value="{$show_url}" />
+	<input type="hidden" name="subject" value="{$subject}" />
+	<input type="hidden" name="total_fee" value="{$total_money}" />
+	<input type="hidden" name="sign_type" value="{$sign_type}" />
+	<input type="hidden" name="sign" value="{$sign}" />
+	<img src="/static/css/i/alipay.png" /><br /><input type="submit" class="formbutton gotopay" value="前往支付宝支付" />
+</form>
+<!--{elseif $order_service=='bill'}-->
+<form name="kqPay" method="post" action="https://www.99bill.com/gateway/recvMerchantInfoAction.htm"  target="_blank" sid="charge">
+			<input type="hidden" name="inputCharset" value="{$inputCharset}"/>
+			<input type="hidden" name="bgUrl" value="{$bgUrl}"/>
+			<input type="hidden" name="pageUrl" value="{$pageUrl}"/>
+			<input type="hidden" name="version" value="{$version}"/>
+			<input type="hidden" name="language" value="{$language}"/>
+			<input type="hidden" name="signType" value="{$signType}"/>
+			<input type="hidden" name="signMsg" value="{$signMsg}"/>
+			<input type="hidden" name="merchantAcctId" value="{$merchantAcctId}"/>
+			<input type="hidden" name="payerName" value="{$payerName}"/>
+			<input type="hidden" name="payerContactType" value="{$payerContactType}"/>
+			<input type="hidden" name="payerContact" value="{$payerContact}"/>
+			<input type="hidden" name="orderId" value="{$orderId}"/>
+			<input type="hidden" name="orderAmount" value="{$orderAmount}"/>
+			<input type="hidden" name="orderTime" value="{$orderTime}"/>
+			<input type="hidden" name="productName" value="{$productName}"/>
+			<input type="hidden" name="productNum" value="{$productNum}"/>
+			<input type="hidden" name="productId" value="{$productId}"/>
+			<input type="hidden" name="productDesc" value="{$productDesc}"/>
+			<input type="hidden" name="ext1" value="{$ext1}"/>
+			<input type="hidden" name="ext2" value="{$ext2}"/>
+			<input type="hidden" name="payType" value="{$payType}"/>
+			<input type="hidden" name="bankId" value="{$bankId}"/>
+			<input type="hidden" name="redoFlag" value="{$redoFlag}"/>
+			<input type="hidden" name="pid" value="{$pid}"/>
+			
+	<img src="/static/css/i/99bill.png" /><br /><input type="submit" class="formbutton gotopay" value="前往快钱支付" />
+</form>
+<!--{elseif $order_service=='chinabank'}-->
+<form id="order-pay-form" method="post" action="https://pay3.chinabank.com.cn/PayGate" target="_blank" sid="charge">
+	<input type="hidden" name="v_mid" value="{$v_mid}" />
+	<input type="hidden" name="v_oid" value="{$v_oid}" />
+	<input type="hidden" name="v_amount" value="{$total_money}" />
+	<input type="hidden" name="v_moneytype" value="{$v_moneytype}" />
+	<input type="hidden" name="v_url" value="{$v_url}" />
+	<input type="hidden" name="v_md5info" value="{$v_md5info}" />
+	<img src="/static/css/i/chinabank.png" /><br/><input type="submit" class="formbutton gotopay" value="前往网银在线支付" style="vertical-align:middle;"/>
+</form>
+                                <!--{elseif $order_service=='paypal'}-->
+                                <form id="order-pay-form" method="post" action="{$post_url}" target="_blank" sid="charge">
+
+                                    <!-- PayPal Configuration -->
+                                    <input type="hidden" name="business" value="{$business}">
+                                    <input type="hidden" name="cmd" value="{$cmd}">
+
+                                    <input type="hidden" name="return" value="{$return_url}">
+                                    <input type="hidden" name="cancel_return" value="{$cancel_url}">
+                                    <input type="hidden" name="notify_url" value="{$notify_url}">
+
+                                    <input type="hidden" name="rm" value="2">
+                                    <input type="hidden" name="currency_code" value="{$INI['system']['currencyname']}">
+                                    <input type="hidden" name="lc" value="{$location}">
+                                    <input type="hidden" name="charset" value="utf-8">
+                                    <input type="hidden" name="bn" value="toolkit-php">
+
+                                    <!-- Payment Page Information -->
+                                    <input type="hidden" name="no_shipping" value="1">
+                                    <input type="hidden" name="no_note" value="1">
+
+                                    <!-- Product Information -->
+                                    <input type="hidden" name="item_name" value="{$item_name}">
+                                    <input type="hidden" name="amount" value="{$amount}">
+                                    <input type="hidden" name="quantity" value="{$quantity}">
+                                    <input type="hidden" name="item_number" value="{$item_number}">
+
+
+                                    <!-- Customer Information -->
+                                    <input type="hidden" name="first_name" value="{$login_user['realname']}">
+                                    <input type="hidden" name="last_name" value="">
+                                    <input type="hidden" name="address1" value="{$login_user['address']}">
+                                    <input type="hidden" name="address2" value="">
+
+                                    <input type="hidden" name="zip" value="{$login_user['zipcode']}">
+                                    <input type="hidden" name="email" value="{$login_user['email']}">
+                                    <img src="/static/css/i/paypal.png" /><br/><input type="submit" class="formbutton gotopay" value="Go to PayPal" style="vertical-align:middle;"/>
+                                </form>
+
+<!--{/if}-->
+						<div class="back-to-check"><a href="/credit/charge.php?money={$total_money}">&raquo; 返回选择其他支付方式</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+    </div>
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

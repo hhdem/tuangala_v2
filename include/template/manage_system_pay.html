@@ -1,0 +1,121 @@
+<!--{include manage_header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="partner">
+	<div class="dashboard" id="dashboard">
+		<ul>${mcurrent_system('pay')}</ul>
+	</div>
+	<div id="content" class="clear mainwide">
+        <div class="clear box">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head"><h2>支付方式</h2></div>
+                <div class="sect">
+                    <form method="post">
+					<!--${$index=0;}-->
+					<!-- Alipay -->
+						<div class="wholetip clear"><h3>${++$index}、支付宝（仅支持即时到帐，如没有保留为空）</h3></div>
+                        <div class="field">
+                            <label>商户ID号</label>
+                            <input type="text" size="30" name="alipay[mid]" class="f-input" style="width:200px;" value="{$INI['alipay']['mid']}"/><span class="inputtip">商户申请：<a href="http://www.zuitu.com/value_alipay.html">签约支付宝</a></span>
+                        </div>
+                        <div class="field">
+                            <label>交易密钥</label>
+                            <input type="password" size="30" name="alipay[sec]" class="f-input" value="{$INI['alipay']['sec']}"/>
+                        </div>
+                        <div class="field">
+                            <label>支付宝账户</label>
+                            <input type="text" size="30" name="alipay[acc]" class="f-input" style="width:200px;" value="{$INI['alipay']['acc']}"/><span class="inputtip">支付宝登录帐户名</span>
+                        </div>
+                        <div class="field">
+                            <label>交易超时</label>
+							<select name="alipay[itbpay]" class="f-input" style="width:160px;">${Utility::Option($option_alipayitbpay, $INI['alipay']['itbpay'], '------未开通------')}</select><span class="inputtip">未开通超功能，请不要选择</span>
+						</div>
+					<!-- Alipay/End -->
+
+					<!-- YeePay -->
+						<div class="wholetip clear"><h3>${++$index}、易宝支付（支持网银直达）</h3></div>
+                        <div class="field">
+                            <label>商户ID号</label>
+                            <input type="text" size="30" name="yeepay[mid]" class="f-input" style="width:200px;" value="{$INI['yeepay']['mid']}"/><span class="inputtip">商户申请：<a href="http://www.zuitu.com/value_yeepay.html">签约易宝支付</a></span>
+                        </div>
+                        <div class="field">
+                            <label>交易密钥</label>
+                            <input type="password" size="30" name="yeepay[sec]" class="f-input" value="{$INI['yeepay']['sec']}"/>
+                        </div>
+					<!-- YeePay/End -->
+					
+					<!-- Tenpay -->
+						<div class="wholetip clear"><h3>${++$index}、财付通（没有的话，保留为空）</h3></div>
+                        <div class="field">
+                            <label>商户ID号</label>
+                            <input type="text" size="30" name="tenpay[mid]" class="f-input" value="{$INI['tenpay']['mid']}" style="width:200px;"/><span class="inputtip">商户申请：<a href="http://www.zuitu.com/value_tenpay.html">签约财付通</a></span>
+                        </div>
+                        <div class="field">
+                            <label>交易密钥</label>
+                            <input type="password" size="30" name="tenpay[sec]" class="f-input" value="{$INI['tenpay']['sec']}"/>
+                        </div>
+					<!-- Tenpay/END -->
+
+					<!-- Chinabank -->
+						<div class="wholetip clear"><h3>${++$index}、网银在线（没有的话，保留为空）</h3></div>
+                        <div class="field">
+                            <label>商户ID号</label>
+                            <input type="text" size="30" name="chinabank[mid]" class="f-input" value="{$INI['chinabank']['mid']}" style="width:200px;"/><span class="inputtip">商户申请：<a href="http://www.zuitu.com/value_chinabank.html">签约网银在线</a></span>
+                        </div>
+                        <div class="field">
+                            <label>交易密钥</label>
+                            <input type="password" size="30" name="chinabank[sec]" class="f-input" value="{$INI['chinabank']['sec']}"/>
+                        </div>
+					<!-- Chinabank/End -->
+
+					<!-- 99BILL -->
+						<div class="wholetip clear"><h3>${++$index}、快钱（没有的话，保留为空）</h3></div>
+                        <div class="field">
+                            <label>商户ID号</label>
+                            <input type="text" size="30" name="bill[mid]" class="f-input" value="{$INI['bill']['mid']}" style="width:200px;"/><span class="inputtip">商户申请：<a href="http://www.zuitu.com/value_99bill.html">签约快钱支付</a></span>
+                        </div>
+                        <div class="field">
+                            <label>交易密钥</label>
+                            <input type="password" size="30" name="bill[sec]" class="f-input" value="{$INI['bill']['sec']}"/>
+                        </div>
+					<!-- 99BILL/End -->
+
+					<!-- Paypal -->
+						<div class="wholetip clear"><h3>${++$index}、Paypal（没有的话，保留为空）</h3></div>
+                        <div class="field">
+                            <label>Account Email</label>
+                            <input type="text" size="30" name="paypal[mid]" class="f-input" value="{$INI['paypal']['mid']}" style="width:200px;" /><span class="inputtip">Email of paypal account.</span>
+                        </div>
+                        <div class="field">
+                            <label>Location</label>
+                            <input type="text" size="30" name="paypal[loc]" class="f-input" value="{$INI['paypal']['loc']}" style="width:200px;"/><span class="inputtip">Location, such as: US,CA,CN</span>
+                        </div>
+					<!-- Paypal/End -->
+
+					<!-- other -->
+						<div class="wholetip clear"><h3>${++$index}、其他支付手段</h3></div>
+                        <div class="field">
+                            <label>支付信息</label>
+                            <div style="float:left;"><textarea cols="45" rows="5" name="other[pay]" class="f-textarea editor">${htmlspecialchars($INI['other']['pay'])}</textarea></div>
+                        </div>
+                        <div class="act">
+                            <input type="submit" value="保存" name="commit" class="formbutton"/>
+                        </div>
+					<!-- other/End -->
+                    </form>
+                </div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+	</div>
+
+<div id="sidebar">
+</div>
+
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include manage_footer}-->

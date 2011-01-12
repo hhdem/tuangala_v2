@@ -1,0 +1,108 @@
+<!--{include header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+
+<!--{if $order}-->
+<div id="sysmsg-tip" ><div class="sysmsg-tip-top"></div><div class="sysmsg-tip-content">您已经下过订单，但还没有付款。<a href="/order/check.php?id={$order['id']}">查看订单并付款</a><span id="sysmsg-tip-close" class="sysmsg-tip-close">关闭</span></div><div class="sysmsg-tip-bottom"></div></div><div id="deal-default">
+<!--{/if}-->
+
+	<div id="deal-default">
+		<!--{include block_team_share}-->
+		<div class="content">
+			<div class="cityimg"><img src="/static/css/i/area/{$city['ename']}.png"></div>
+			<div id="deal-intro" class="cf">
+				<div class="conleft_title">
+					<h1><!--{if $team['close_time']==0}--><a class="deal-today-link" href="/team.php?id={$team['id']}">热销商品：</a><!--{/if}-->{$team['title']}</h1>
+				</div>
+                <div class="main">
+                    <div class="deal-buy">
+                        <div class="deal-price-tag"></div>
+					<!--{if ($team['state']=='soldout')}-->
+                        <p class="deal-price"><strong>{$currency}${moneyit($team['team_price'])}</strong><span class="deal-price-soldout"></span></p>
+					<!--{elseif $team['close_time']}-->
+                        <p class="deal-price"><strong>{$currency}${moneyit($team['team_price'])}</strong><span class="deal-price-expire"></span></p>
+					<!--{else}-->
+                        <p class="deal-price"><strong>{$currency}${moneyit($team['team_price'])}</strong><span><a ${$team['begin_time']<time()?'href="/team/buy.php?id='.$team['id'].'"':''}><img src="/static/css/i/button-deal-buy.gif" /></a></span></p>
+					<!--{/if}-->
+                    </div>
+                    <table class="deal-discount">
+                        <tr>
+                            <th>原价</th>
+                            <th>折扣</th>
+                            <th>节省</th>
+                        </tr>
+                        <tr>
+                            <td>{$currency}${moneyit($team['market_price'])}</td>
+							<td>${team_discount($team)}</td>
+                            <td>{$currency}{$discount_price}</td>
+                        </tr>
+                    </table>
+				</div>
+                <div class="side">
+                    <div class="deal-buy-cover-img" id="team_images">
+					<!--{if $team['image1']||$team['image2']}-->
+						<div class="mid">
+							<ul>
+								<li class="first"><img src="${team_image($team['image'])}"/></li>
+							<!--{if $team['image1']}-->
+								<li><img src="${team_image($team['image1'])}"/></li>
+							<!--{/if}-->
+							<!--{if $team['image2']}-->
+								<li><img src="${team_image($team['image2'])}"/></li>
+							<!--{/if}-->
+							</ul>
+							<div id="img_list">
+								<a ref="1" class="active">1</a>
+							<!--${$imageindex=1;}-->
+							<!--{if $team['image1']}-->
+								<a ref="${++$imageindex}" >{$imageindex}</a>
+							<!--{/if}-->
+							<!--{if $team['image2']}-->
+								<a ref="${++$imageindex}" >{$imageindex}</a>
+							<!--{/if}-->
+							</div> 
+						</div>
+						<!--{else}-->
+							<img src="${team_image($team['image'])}" width="440" height="280" />
+						<!--{/if}-->
+					</div>
+				<!--{if strip_tags($team['summary'])!=$team['summary']}-->{$team['summary']}<!--{else}--><div class="digest"><br />${nl2br(strip_tags($team['summary']))}</div><!--{/if}-->
+                </div>
+            </div>
+            <div id="deal-stuff" class="cf">
+                <div class="clear box  ${($partner&&!option_yes('teamwhole'))?'box':''}"">
+                    <div class="box-top"></div>
+                    <div class="box-content cf">
+                        <div class="main" id="team_main_side">
+						<!--{if trim(strip_tags($team['detail']))}-->
+                            <h2 id="detail">本单详情</h2>
+							<div class="blk detail">{$team['detail']}</div>
+						<!--{/if}-->
+						</div>
+                        <div class="side">
+                            <div id="side-business">
+								<h2>{$partner['title']}</h2>
+								<div style="margin-top:10px;">{$partner['location']}</div>
+								<div style="margin-top:10px;"><a href="{$partner['homepage']}" target="_blank">${domainit($partner['homepage'])}</a></div>
+								<!--{include block_block_partnermap}-->
+							</div>
+						</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="box-bottom"></div>
+                </div>
+            </div>
+    </div>
+    <div id="sidebar">
+		<!--{include block_side_bulletin}-->
+		<!--{include block_side_flv}-->
+		<!--{include block_side_ask}-->
+		<!--{include block_side_vote}-->
+		<!--{include block_side_subscribe}-->
+	</div>
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

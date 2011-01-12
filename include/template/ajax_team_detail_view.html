@@ -1,0 +1,39 @@
+
+            <div id="deal-stuff" class="cf team-detail">
+                <div class="clear box ${($partner&&!option_yes('teamwhole'))?'box':''}" style="width: 702px;float:left; ">
+                    <div class="box-top"></div>
+                    <div class="box-content cf">
+                        <div class="main" id="team_main_side">
+						<!--{if trim(strip_tags($team['detail']))}-->
+                            <h2 class="h2" id="detail">本单详情</h2>
+							<div class="blk detail">{$team['detail']}</div>
+						<!--{/if}-->
+						<!--{if trim(strip_tags($team['notice']))}-->
+							<h2 class="h2" id="detailit">特别提示</h2>
+							<div class="blk cf">{$team['notice']}</div>
+						<!--{/if}-->
+						<!--{if trim(strip_tags($team['userreview']))}-->
+							<h2 class="h2" id="userreview">他们说</h2>
+							<div class="blk review">${userreview($team['userreview'])}</div>
+						<!--{/if}-->
+						<!--{if trim(strip_tags($team['systemreview']))}-->
+							<h2 class="h2" id="systemreview">{$INI['system']['abbreviation']}说</h2>
+							<div class="blk review">{$team['systemreview']}</div>
+						<!--{/if}-->
+						</div>
+
+                        <div class="side" id="team_partner_side_${(!option_yes('teamwhole')&&abs(intval($partner['id'])))?1:0}">
+                            <div id="side-business">
+								<h2 class="h2">商户名称: <a href="/partner.php?id={$partner['id']}" style="color:#ececec;">{$partner['title']}</a></h2>
+								<div style="margin-top:10px;">{$partner['location']}</div>
+								<div style="margin-top:10px;"><a href="{$partner['homepage']}" target="_blank">${domainit($partner['homepage'])}</a></div>
+								<div style="margin-top:10px;">联系方式：{$partner['phone']} / {$partner['mobile']}</div>
+								<div style="margin-top:10px;">{$partner['other']}</div>
+							</div>
+						</div>
+
+                        <div class="clear"></div>
+                    </div>
+                    <div class="box-bottom"></div>
+                </div>
+				 

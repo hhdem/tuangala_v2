@@ -1,0 +1,222 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<style>#sc_drag_area_protector div{
+  border-radius: 0px 0px;
+  margin:0;
+  /*max-width:100%;*/
+  min-width: 1px;
+
+}
+
+#sc_drag_area {
+  height:100px;
+  left:150px;
+  position: absolute;
+  top:100px;
+  width:250px;
+  z-index: 9999;
+}
+#sc_drag_container {
+  border: 1px solid #0000FF;
+  cursor: move ;
+  height: 100% ;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative ;
+  width: 100%;
+  z-index:9997;
+}
+#sc_drag_area_protector {
+  border-radius: 0px 0px;
+  display: block;
+  height:100%;
+  left:0;
+  top:0;
+  position: absolute;
+  width:100%;
+  z-index:8500;
+  margin: 0;
+  
+  min-width: 1px;
+  overflow: hidden;
+}
+#sc_drag_size {
+  background-color:#444444;
+  color:#ffffff;
+  font-family: verdana;
+  font-weight:bold;
+  font-size:10px;
+  height:18px;
+  min-width:65px !important;
+  left:12px;
+  line-height:18px;
+  position:absolute;
+  padding-left:4px;
+  padding-right:4px;
+  text-align:center;
+  top: -13px;
+  z-index:9998;
+}
+#sc_drag_cancel, #sc_drag_crop {
+  background:#000000;
+  cursor:pointer;
+  color:#ffffff;
+  font-size:10px;
+  font-family: verdana;
+  font-weight:bold;
+  height:22px;
+  line-height:22px;
+  position:absolute ;
+  z-index:9998
+}
+#sc_drag_crop {
+  bottom:-25px;
+  text-align: center;
+  right:10px;
+  min-width: 30px !important;
+  padding: 0 10px;
+}
+#sc_drag_cancel {
+  bottom:-25px;
+  text-align: center;
+  right:70px;
+  min-width: 30px !important;
+  padding: 0 10px;
+}
+#sc_drag_shadow_top, #sc_drag_shadow_bottom, #sc_drag_shadow_left, #sc_drag_shadow_right {
+  background-color: #000000;
+  opacity: 0.5;
+  position: absolute;
+  z-index:7000;
+  border: 0;
+}
+#sc_drag_shadow_top {
+  left: 0;
+  top: 0;
+}
+#sc_drag_shadow_bottom {
+  bottom: 0;
+  right: 0;
+}
+#sc_drag_shadow_left {
+  bottom: 0;
+  left: 0;
+}
+#sc_drag_shadow_right {
+  right: 0;
+  top: 0;
+}
+#sc_drag_north_east, #sc_drag_north_west, #sc_drag_south_east, #sc_drag_south_west  {
+  border:1px solid #FFFFFF;
+  background-color: #0000FF;
+  height: 5px;
+  position: absolute;
+  width: 5px;
+  z-index:9998;
+}
+#sc_drag_north_east {
+  cursor: ne-resize ;
+  right: -4px ;
+  top: -3px;
+}
+#sc_drag_north_west {
+  cursor: nw-resize ;
+  left: -3px ;
+  top: -3px;
+}
+#sc_drag_south_east {
+  bottom: -4px;
+  cursor: se-resize ;
+  right: -4px ;
+}
+#sc_drag_south_west {
+  bottom: -4px;
+  cursor: sw-resize ;
+  left: -3px ;
+}
+
+.sc_tip_save_status {
+  position :fixed;
+  border-radius: 4px 4px;
+  height: 30px;
+  line-height: 30px;
+  text-indent: 1em;
+  width: 200px;
+  background: #fff1a8;
+  color: #000000;
+  top:5px;
+  left:45%;
+  font-size: 12px;
+}
+
+.sc_tip_save_status a{
+  text-decoration: underline;
+  color: #2A5DB0;
+}</style><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>团旮旯 - 淄博的本地团购站 | 淄博打折 | 淄博团购信息发布 - 404页面</title>
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<!-- This page, code and content is copyrighted material owned by Tuangala. --><style type="text/css">
+
+body {background:#4a8ad3 url(/static/theme/noietheme/css/i/body_bg.jpg); font-family: 微软雅黑, Arial, Helvetica, sans-serif; color:#000; font-size:16px;}
+
+#position {position:absolute; bottom:10px;padding:10px; right:5px;width:45em; height:16em; color:#fff;z-index:100;}
+#background {position:absolute;margin: 0px auto; bottom:20px;right:10px;padding:10px; width:45em; height:14em; background:#274fae; filter:alpha(opacity=50); -moz-opacity:0.5; opacity:0.5; border-style:double double double double; border-color:#07286f; border-width:3px;}
+#logo {bottom: 300px;
+color: white;
+font-size: 120px;
+padding: 10px;
+position: absolute;
+right: 800px;}
+
+a:link {color:#000099; text-decoration:none;}
+a:visited {color:#000066; text-decoration:none;}
+a:hover {color:#000099; text-decoration:underline;}
+
+.h1 {font-size:24px; color:#fff; text-align:left; max-width:25em; font-weight:bold; padding-top:15px;}
+.h1 div {text-align:right;}
+h3 {text-align:center; font-size:18px;}
+
+.copyright {position:absolute; right:0px; bottom:0px; font-size:10px; color:#14336f}
+
+.statcounter {display:none;}
+</style>
+
+
+
+<link type="text/css" rel="stylesheet" href="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/style.css"><script type="text/javascript" charset="utf-8" src="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/page_context.js"></script></head><body screen_capture_injected="true">
+<div id="background"></div>
+<div id="logo">404</div>
+<div id="position">
+
+<div class="h1">你刚刚所访问的页面<div>被移动 或 删除 或 根本就不存在了.</div></div>
+
+<ul>
+
+<li>如果这个页面并不是你期望的, 请联系我们的客服, 我们会及时尽快的解决, <a href="http://www.tuangala.com/about/contact.php">找客服</a>.</li>
+
+<li>返回 <a href="/">团旮旯主页面</a> 重新寻找你要访问的页面吧!</li>
+</ul>
+
+
+<h3>给您带来的不便深表歉意</h3>
+</div>
+
+
+<div style="position:absolute; margin: 0px auto;">
+
+</div>
+
+<div class="copyright">© Tuangala. All Rights Reserved.</div>
+
+
+<noscript></noscript>
+</div>
+<!-- End of StatCounter Code -->
+
+
+
+</body></html>

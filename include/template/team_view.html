@@ -1,0 +1,211 @@
+<!--{include header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+
+<!--{if $order}-->
+<div id="sysmsg-tip" ><div class="sysmsg-tip-top"></div><div class="sysmsg-tip-content">您已经下过订单，但还没有付款。<a href="/order/check.php?id={$order['id']}">查看订单并付款</a><span id="sysmsg-tip-close" class="sysmsg-tip-close">关闭</span></div><div class="sysmsg-tip-bottom"></div></div><div id="deal-default"> 
+<!--{/if}-->
+
+	<div id="deal-default">
+		<!--{include block_team_share}-->
+		<div class="content">
+			<div class="cityimg_{$city['ename']}"></div>
+			<div id="deal-intro" class="cf">
+				<div class="conleft_title">
+					<h1><!--{if $team['close_time']==0}--><a class="deal-today-link" href="/team.php?id={$team['id']}">今日团购：</a><!--{/if}-->{$team['title']}</h1>
+				</div>
+                <div class="main">
+                    <div class="deal-buy">
+                        <div class="deal-price-tag"></div>
+					<!--{if ($team['state']=='soldout')}-->
+                        <p class="deal-price"><strong>{$currency}${moneyit($team['team_price'])}</strong><span class="deal-price-soldout"></span></p>
+					<!--{elseif $team['close_time']}-->
+                        <p class="deal-price"><strong>{$currency}${moneyit($team['team_price'])}</strong><span class="deal-price-expire"></span></p>
+					<!--{else}-->
+                        <p class="deal-price"><strong>{$currency}${moneyit($team['team_price'])}</strong><span><a ${$team['begin_time']<time()?'href="/team/buy.php?id='.$team['id'].'"':''}><img src="/static/css/i/button-deal-buy.gif" /></a></span></p>
+					<!--{/if}-->
+                    </div>
+                    <table class="deal-discount">
+                        <tr>
+                            <th>原价</th>
+                            <th>折扣</th>
+                            <th>节省</th>
+                        </tr>
+                        <tr>
+                            <td>{$currency}${moneyit($team['market_price'])}</td>
+							<td>${team_discount($team)}</td>
+                            <td>{$currency}{$discount_price}</td>
+                        </tr>
+                    </table>
+					<!--{if $team['close_time']}-->
+                    <div class="deal-box deal-timeleft deal-off" id="deal-timeleft" curtime="{$now}000" diff="{$diff_time}000">
+						<h3>本团购结束于</h3>
+						<div class="limitdate"><p class="deal-buy-ended">${date('Y-m-d', $team['close_time'])}<br>${date('H:i:s', $team['close_time'])}</p></div>
+					</div>
+					<!--{else}-->
+                    <div class="deal-box deal-timeleft deal-on" id="deal-timeleft" curtime="{$now}000" diff="{$diff_time}000">
+						<h3>剩余时间</h3>
+						<div class="limitdate">
+						<p id="counter" class="last_time">
+						<!--{if $left_day>0}-->
+							<span class="day"><em>{$left_day}</em>天</span><span class="hour"><em>{$left_hour}</em>小时</span><span class="minute"><em>{$left_minute}</em>分钟</span>
+						<!--{else}-->
+							<span class="hour"><em>{$left_hour}</em>小时</span><span class="minute"><em>{$left_minute}</em>分钟</span><span class="second"><em>{$left_time}</em>秒</span>
+						<!--{/if}-->
+						</p>
+						</div>
+
+					</div>
+					<!--{/if}-->
+
+				<!--{if $team['close_time']==0}-->
+					<!--{if $team['state']=='none'}-->
+					<div class="deal-box deal-status" id="deal-status">
+						<p class="deal-buy-tip-top"><strong>{$team['now_number']}</strong> 人已购买</p>
+						<div class="meter-wrap">
+							<div class="meter-value" style="float:left;background-color: #0a0; width: {$team['now_number']/$team['min_number']*100}%;">
+								<div class="meter-text">
+									{$team['now_number']}/{$team['min_number']}
+								</div>
+							</div>
+						</div>
+						<div class="cf"><div class="min">0</div><div class="max">{$team['min_number']}</div></div>
+						<p class="deal-buy-tip-btm">还差 <strong>{$team['min_number']-$team['now_number']}</strong> 人到达最低团购人数</p>
+					</div>
+					<!--{else}-->
+					<div class="deal-box deal-status deal-status-open" id="deal-status">
+						<p class="deal-buy-tip-top"><strong>{$team['now_number']}</strong> 人已购买</p>
+					<!--{if $team['max_number']&&$team['max_number']>$team['now_number']}-->
+						<p class="deal-buy-tip-btm">本单仅剩：<strong>{$team['max_number']-$team['now_number']}</strong>份，欲购从速</p>
+					<!--{/if}-->
+						<p class="deal-buy-on" style="line-height:200%;"><img src="/static/css/i/deal-buy-succ.gif"/> 团购成功！ <!--{if $team['max_number']>$team['now_number']||$team['max_number']==0}--><br/>还可以继续购买<!--{/if}--></p>
+					<!--{if $team['reach_time']}-->
+						<p class="deal-buy-tip-btm">${date('G点i分', $team['reach_time'])}达到最低团购人数：<strong>{$team['min_number']}</strong>人</p>
+					<!--{/if}-->
+					</div>
+					<!--{/if}-->
+				<!--{else}-->
+					<div class="deal-box deal-status deal-status-{$team['state']}" id="deal-status"><div class="deal-buy-{$team['state']}"></div><p class="deal-buy-tip-total">共有 <strong>{$team['now_number']}</strong> 人购买</p></div> 
+				<!--{/if}-->
+					<div style="padding-top:10px;">
+						<a href="/team/list.php">
+							<div class="moreteam">
+							</div>
+						</a>
+					</div>
+				</div>
+                <div class="side">
+					<div style="width:696px;height:280px;">
+						<div class="deal-buy-cover-img" id="team_images">
+						<!--{if $team['image1']||$team['image2']}-->
+							<div class="mid">
+								<ul>
+									<li class="first"><img src="${team_image($team['image'])}"/></li>
+								<!--{if $team['image1']}-->
+									<li><img src="${team_image($team['image1'])}"/></li>
+								<!--{/if}-->
+								<!--{if $team['image2']}-->
+									<li><img src="${team_image($team['image2'])}"/></li>
+								<!--{/if}-->
+								</ul>
+								<div id="img_list">
+									<a ref="1" class="active">1</a>
+								<!--${$imageindex=1;}-->
+								<!--{if $team['image1']}-->
+									<a ref="${++$imageindex}" >{$imageindex}</a>
+								<!--{/if}-->
+								<!--{if $team['image2']}-->
+									<a ref="${++$imageindex}" >{$imageindex}</a>
+								<!--{/if}-->
+								</div> 
+							</div>
+							<!--{else}-->
+								<img src="${team_image($team['image'])}" width="440" height="280" />
+							<!--{/if}-->
+						</div>
+						<!--${
+							$ask_con = array('length(comment)>0');
+							if(option_yes('teamask')) { $ask_con[] = 'team_id > 0'; } 
+							else { $ask_con['team_id'] = $id; }
+							$ask_count = Table::Count('ask', $ask_con);
+							$asks = DB::LimitQuery('ask', array('condition'=>$ask_con, 'size'=>1, 'order'=>'ORDER BY id DESC'));
+						}-->
+						<div id="post_type">
+							<label class="lab">配送方式:<!--{if $team['delivery']=='express'}-->快递<!--{elseif $team['delivery']=='pickup'}-->自取<!--{else}-->{$INI['system']['couponname']}<!--{/if}--></label>
+							<div style="padding:10px;">
+							<!--{if $team['delivery']=='express'}-->快递费用 <span class="money">{$currency}</span>{$team['fare']}<br>配送说明: {$team['express']}<!--{elseif $team['delivery']=='pickup'}--><span><b>自取地址:</b> {$team['address']}<br><b>电话:</b> {$team['mobile']}</span><!--{else}--><span>旮旯卷的配送说明</span><!--{/if}-->
+							</div>
+							<div style="padding:10px 10px 0 10px;float:left;"><label class="lab">本单答疑</label></div>
+							<p class="nav" style="padding-top:5px;border-top: 1px dashed #CDCCCA;font-size: 10px;"><a href="/team/ask.php?id={$team['id']}">查看全部({$ask_count})</a><br><a href="/team/ask.php?id={$team['id']}#post">我要提问</a></p>
+							<ul class="list">
+							<!--{loop $asks $one}-->
+								<li><a href="/team/ask.php?id={$team['id']}#ask-entry-{$one['id']}" target="_blank">${htmlspecialchars(mb_substr($one['content'],0,22,'UTF-8'))}...</a></li>
+							<!--{/loop}-->
+							</ul>
+							<div class="custom-service"><p class="im"><a id="service-msn-help" href="msnim:chat?contact={$INI['system']['kefumsn']}"><img src="/static/css/i/button-custom-msn.gif" /></a>&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin={$INI['system']['kefuqq']}&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{$INI['system']['kefuqq']}:42" alt="在线客服:{$INI['system']['kefuqq']}" title="在线客服:{$INI['system']['kefuqq']}" /></a>&nbsp;<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=244756508&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:244756508:42" alt="在线客服:244756508" title="在线客服:244756508" /></a><a href="/about/contact.php" target="_blank;">更多>></a></p></div>
+						</div>
+					</div>
+				<!--{if strip_tags($team['summary'])!=$team['summary']}-->{$team['summary']}<!--{else}--><div class="digest"><br />${nl2br(strip_tags($team['summary']))}</div><!--{/if}-->
+                </div>
+            </div>
+            <div id="deal-stuff" class="cf">
+                <div class="clear box ${($partner&&!option_yes('teamwhole'))?'box':''}" style="width: 702px;float:left; padding-right: 12px;">
+                    <div class="box-top"></div>
+                    <div class="box-content cf">
+                        <div class="main" id="team_main_side">
+						<!--{if trim(strip_tags($team['detail']))}-->
+                            <h2 class="h2" id="detail">本单详情</h2>
+							<div class="blk detail">{$team['detail']}</div>
+						<!--{/if}-->
+						<!--{if trim(strip_tags($team['notice']))}-->
+							<h2 class="h2" id="detailit">特别提示</h2>
+							<div class="blk cf">{$team['notice']}</div>
+						<!--{/if}-->
+						<!--{if trim(strip_tags($team['userreview']))}-->
+							<h2 class="h2" id="userreview">他们说</h2>
+							<div class="blk review">${userreview($team['userreview'])}</div>
+						<!--{/if}-->
+						<!--{if trim(strip_tags($team['systemreview']))}-->
+							<h2 class="h2" id="systemreview">{$INI['system']['abbreviation']}说</h2>
+							<div class="blk review">{$team['systemreview']}</div>
+						<!--{/if}-->
+						</div>
+
+                        <div class="side" id="team_partner_side_${(!option_yes('teamwhole')&&abs(intval($partner['id'])))?1:0}">
+                            <div >
+								<h2 class="h2">商户名称: <a href="/partner.php?id={$partner['id']}" style="color:#ececec;">{$partner['title']}</a></h2>
+								<div style="float:left;width:330px;">
+									<div style="margin-top:10px;">{$partner['location']}</div>
+									<div style="margin-top:10px;">主页:<a href="{$partner['homepage']}" target="_blank"> ${domainit($partner['homepage'])}</a></div>
+									<div style="margin-top:10px;">联系方式: {$partner['phone']} / {$partner['mobile']}</div>
+									<div style="margin-top:10px;">{$partner['other']}</div>
+								</div>
+								<div id="pmap" style="float:right;">
+								<!--{include block_block_partnermap}-->
+								</div>
+							</div>
+							
+						</div>
+
+                        <div class="clear"></div>
+                    </div>
+                    <div class="box-bottom"></div>
+                </div>
+				 <div id="sidebar">
+					<!--{include block_side_invite}-->
+					<!--{include block_side_flv}-->
+					<!--{include block_side_others_seconds}-->
+					<!--{include block_side_others}-->
+					<!--{include block_side_vote}-->
+					<!--{include block_side_business}-->
+					<!--{include block_side_subscribe}-->
+				</div>
+            </div>
+    </div>
+   
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->

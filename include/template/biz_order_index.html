@@ -1,0 +1,44 @@
+<!--{include  biz_header}-->
+
+<div id="bdw" class="bdw">
+<div id="bd" class="cf">
+<div id="coupons">
+    <div id="content" class="coupons-box clear mainwide">
+		<div class="box clear">
+            <div class="box-top"></div>
+            <div class="box-content">
+                <div class="head">
+                    <h2>订单列表</h2>
+					<ul class="filter"><li><form method="get">用户Email：<input type="text" name="uemail" class="h-input" value="${htmlspecialchars($uemail)}" >&nbsp;项目编号：<input type="text" name="team_id" class="h-input number" value="{$team_id}" >&nbsp;<select name="p_state" ><option value="" selected="">--状态选择--</option><option value="pay" >已付款</option><option value="unpay" >未付款</option></select>&nbsp;<input type="submit" value="筛选" class="formbutton"  style="padding:1px 6px;"/><form></li></ul>
+				</div>
+                <div class="sect">
+					<table id="orders-list" cellspacing="0" cellpadding="0" border="0" class="coupons-table">
+					<tr><th width="40">ID</th><th width="340">项目</th><th width="180">用户</th><th width="40" nowrap>数量</th><th width="50" nowrap>总款</th><th width="50" nowrap>已付</th><th width="50" nowrap>状态</th><th width="50" nowrap>递送</th><th width="50" nowrap>操作</th></tr>
+					<!--{loop $orders $index $one}-->
+					<tr ${$index%2?'':'class="alt"'} id="order-list-id-{$one['id']}">
+						<td>{$one['id']}</td>
+						<td>{$one['team_id']}&nbsp;(<a class="deal-title" href="/team.php?id={$one['team_id']}" target="_blank">{$teams[$one['team_id']]['title']}</a>)</td>
+						<td><a href="/ajax/manage.php?action=userview&id={$one['user_id']}" class="ajaxlink">{$users[$one['user_id']]['email']}<br/>{$users[$one['user_id']]['username']}</a>{$users[$one['user_id']]['mobile']}</td>
+						<td>{$one['quantity']}</td>
+						<td><span class="money">{$currency}</span><!--{if $one['state']=='unpay'}--><a href="/ajax/partner.php?action=changeorigin&id={$one['id']}" 
+						class="ajaxlink">${moneyit($one['origin'])}</a><br><a href="/ajax/partner.php?action=changeorigin&id={$one['id']}" 
+						class="ajaxlink" style="font-size:8px;" alt="尚未付款, 可更改付款金额" title="尚未付款, 可更改付款金额">更改</a><!--{else}-->${moneyit($one['origin'])}<!--{/if}--></td>
+						<td><span class="money">{$currency}</span>${moneyit($one['credit']+$one['money'])}</td>
+						<td><!--{if $one['state'] == 'pay'}--><font color="red">已付款</font><!--{else}--><font color="green">未付款</font><!--{/if}--></td>
+						<td>{$option_delivery[$teams[$one['team_id']]['delivery']]}${$one['express_id']?'Y':''}</td>
+						<td class="op" nowrap><!--{if $one['state']=='pay'}--><a href="/ajax/partner.php?action=orderview&id={$one['id']}" 
+						class="ajaxlink">详情</a><!--{elseif $one['state']=='unpay'}--><a href="/ajax/partner.php?action=ordercash&id={$one['id']}" class="ajaxlink" ask="确认本订单为现金付款？确认后本订单就是已付款状态!">现金</a><!--{/if}--></td>
+					</tr>
+					<!--{/loop}-->
+					<tr><td colspan="9">{$pagestring}</tr>
+                    </table>
+				</div>
+            </div>
+            <div class="box-bottom"></div>
+        </div>
+    </div>
+</div>
+</div> <!-- bd end -->
+</div> <!-- bdw end -->
+
+<!--{include footer}-->
